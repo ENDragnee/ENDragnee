@@ -1,6 +1,9 @@
 <!-- Header -->
 <h1 align="center">👋 Name's, <strong>Mastwal Mesfin</strong></h1>
 <h2 align="center"><strong>Co-Founder and Currently CTO of ASCII Technologies PLC.</strong></h2>
+<p align="center">
+  <img src="./public/ascii.png" alt="ASCII Technologies Company Logo" width="200" />
+</p>
 
 <p align="center">
     Full-stack Developer · Next.js · TypeScript · Prisma · DevOps . Laravel . Django . QT . C++ . Flutter
