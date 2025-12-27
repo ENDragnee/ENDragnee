@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-    Full-stack Developer · Next.js · TypeScript · Prisma · DevOps . Laravel . Django . QT . C++ . Flutter . Nix . Python . Java . Shell
+    Full-stack Developer · Next.js · TypeScript · Prisma · DevOps . Laravel . Django . QT . C++ . Flutter . Nix . Python . Java . Shell. LUA
 </p>
 
 ---
