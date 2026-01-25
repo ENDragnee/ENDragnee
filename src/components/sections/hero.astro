@@ -1,0 +1,113 @@
+---
+import { config } from "../../data/config";
+import SocialButton from "../ui/social-button.astro";
+import { ArrowRight, Terminal } from "lucide-react";
+---
+
+<section id="hero" class="flex flex-col gap-12 py-12 md:py-24">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+    {/* --- Left Column: Intro --- */}
+    <div class="md:col-span-8 flex flex-col gap-8 order-2 md:order-1">
+      {/* Terminal Header decoration */}
+      <div
+        class="flex items-center gap-2 text-crimson-500 font-mono text-sm mb-2"
+      >
+        <Terminal size={16} />
+        <span>~/portfolio/readme.md</span>
+      </div>
+
+      <div class="space-y-4">
+        <h1
+          class="text-5xl sm:text-6xl font-extrabold tracking-tight text-ui-900 dark:text-ui-50"
+        >
+          {config.identity.name}<span class="text-crimson-500">.</span>
+        </h1>
+        <h2 class="text-2xl sm:text-3xl font-mono text-ui-600 dark:text-ui-300">
+          {config.identity.role}
+        </h2>
+      </div>
+
+      <p class="text-lg text-ui-600 dark:text-ui-400 leading-relaxed max-w-2xl">
+        {config.identity.tagline}
+      </p>
+
+      {/* Action Bar */}
+      <div class="flex flex-wrap items-center gap-4 mt-2">
+        <a
+          href="#projects"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium
+            bg-ui-900 text-white dark:bg-white dark:text-ui-900
+            hover:bg-crimson-600 dark:hover:bg-crimson-400 dark:hover:text-white
+            transition-colors duration-200"
+        >
+          View Projects
+          <ArrowRight size={18} />
+        </a>
+
+        <div class="flex gap-2">
+          <SocialButton
+            href={config.socials.github}
+            icon="github"
+            label="GitHub"
+          />
+          <SocialButton
+            href={config.socials.linkedin}
+            icon="linkedin"
+            label="LinkedIn"
+          />
+          <SocialButton
+            href={`mailto:${config.identity.email}`}
+            icon="mail"
+            label="Email"
+          />
+        </div>
+      </div>
+    </div>
+
+    {/* --- Right Column: Status Cards --- */}
+    <div class="md:col-span-4 space-y-4 order-1 md:order-2">
+      {/* Status Card */}
+      <div
+        class="p-6 rounded-xl border border-ui-200 dark:border-ui-800
+            bg-ui-50/50 dark:bg-ui-900/50 backdrop-blur-sm"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-mono uppercase tracking-wider text-ui-500"
+            >System Status</span
+          >
+          <span class="relative flex h-3 w-3">
+            <span
+              class={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${config.status.available ? "bg-green-400" : "bg-red-400"}`}
+            ></span>
+            <span
+              class={`relative inline-flex rounded-full h-3 w-3 ${config.status.available ? "bg-green-500" : "bg-red-500"}`}
+            ></span>
+          </span>
+        </div>
+        <p class="font-medium text-ui-900 dark:text-ui-100">
+          {config.status.message}
+        </p>
+      </div>
+
+      {/* Current Focus Card */}
+      <div
+        class="p-6 rounded-xl border border-ui-200 dark:border-ui-800
+            bg-white dark:bg-ui-950"
+      >
+        <span
+          class="text-xs font-mono uppercase tracking-wider text-ui-500 block mb-2"
+        >
+          Current Role
+        </span>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg text-ui-900 dark:text-ui-100">
+            {config.currentWork.company}
+          </span>
+          <span class="text-sm text-ui-600 dark:text-ui-400">
+            {config.currentWork.role}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

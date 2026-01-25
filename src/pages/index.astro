@@ -1,21 +1,13 @@
 ---
 import Layout from "../layouts/layout.astro";
+import Hero from "../components/sections/hero.astro";
 ---
 
-<Layout title="Developer Portfolio">
-  <section class="flex flex-col gap-4 mt-20">
-    <h1 class="text-4xl font-bold font-mono">
-      Phase 1 <span class="text-crimson-500">Complete</span>.
-    </h1>
-    <p class="text-ui-600 dark:text-ui-400 max-w-lg text-lg">
-      The foundation is set.
-    </p>
-    <div
-      class="mt-4 p-4 border border-ui-200 dark:border-ui-800 rounded bg-ui-50 dark:bg-ui-900 font-mono text-sm"
-    >
-      <p>System Status: <span class="text-green-500">Online</span></p>
-      <p>Tailwind v4: <span class="text-green-500">Active</span></p>
-      <p>Theme: <span class="text-crimson-500">Crimson</span></p>
-    </div>
+<Layout title="Alex Developer | Portfolio">
+  <Hero />
+
+  <!-- Placeholder for next phases -->
+  <section class="h-[50vh] flex items-center justify-center text-ui-400">
+    (Phase 3: Work History & Skills loading...)
   </section>
 </Layout>
