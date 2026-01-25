@@ -1,0 +1,17 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<span
+  class="px-3 py-1 text-xs font-mono rounded
+  bg-ui-100 dark:bg-ui-800/50
+  text-ui-700 dark:text-ui-300
+  border border-ui-200 dark:border-ui-700
+  hover:border-crimson-500 hover:text-crimson-600 dark:hover:text-crimson-400
+  transition-colors duration-200 cursor-default select-none"
+>
+  {text}
+</span>

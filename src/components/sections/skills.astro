@@ -1,0 +1,36 @@
+---
+import { skillData } from "../../data/skills";
+import Badge from "../ui/badge.astro";
+import { Cpu } from "lucide-react";
+---
+
+<section id="skills" class="py-20 border-t border-ui-100 dark:border-ui-900">
+  <div class="flex items-center gap-2 mb-8 text-crimson-500 font-mono">
+    <Cpu size={20} />
+    <h2 class="text-xl uppercase tracking-widest">Technical Arsenal</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {
+      skillData.map((category) => (
+        <div
+          class="
+        p-6 rounded-xl 
+        border border-ui-200 dark:border-ui-800 
+        bg-white dark:bg-ui-950
+        hover:border-crimson-500/30 transition-colors duration-300
+      "
+        >
+          <h3 class="text-sm font-mono text-ui-500 dark:text-ui-400 mb-4 uppercase">
+            {category.title}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {category.skills.map((skill) => (
+              <Badge text={skill} />
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,57 @@
+---
+import { historyData } from "../../data/history";
+import { Briefcase } from "lucide-react";
+---
+
+<section id="work" class="py-20">
+  <div class="flex items-center gap-2 mb-12 text-crimson-500 font-mono">
+    <Briefcase size={20} />
+    <h2 class="text-xl uppercase tracking-widest">Experience & Education</h2>
+  </div>
+
+  <div
+    class="relative border-l border-ui-200 dark:border-ui-800 ml-3 space-y-12"
+  >
+    {
+      historyData.map((item) => (
+        <div class="relative pl-8 md:pl-12 group">
+          {/* Timeline Dot */}
+          <span
+            class="
+          absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full 
+          bg-ui-300 dark:bg-ui-700 
+          group-hover:bg-crimson-500 transition-colors duration-300
+        "
+          />
+
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+            <h3 class="text-xl font-bold text-ui-900 dark:text-ui-100 group-hover:text-crimson-500 transition-colors">
+              {item.title}
+            </h3>
+            <span class="font-mono text-sm text-ui-500 dark:text-ui-400">
+              {item.date}
+            </span>
+          </div>
+
+          <div class="mb-4 text-sm font-mono text-crimson-600 dark:text-crimson-400">
+            {item.company}
+          </div>
+
+          <p class="text-ui-600 dark:text-ui-400 leading-relaxed max-w-2xl mb-4">
+            {item.description}
+          </p>
+
+          {item.tags && (
+            <div class="flex flex-wrap gap-2">
+              {item.tags.map((tag) => (
+                <span class="text-xs font-medium text-ui-500 border-b border-ui-200 dark:border-ui-800 pb-0.5">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section>
