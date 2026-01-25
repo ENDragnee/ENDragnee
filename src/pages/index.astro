@@ -1,23 +1,36 @@
 ---
 import Layout from "../layouts/layout.astro";
 import Hero from "../components/sections/hero.astro";
+import About from "../components/sections/about.astro";
+import Skills from "../components/sections/skills.astro";
 import Projects from "../components/sections/projects.astro";
 import Experience from "../components/sections/experience.astro";
-import Skills from "../components/sections/skills.astro";
-// 👇 Add Import
 import GithubDashboard from "../components/sections/github-dashboard.astro";
+import { config } from "../data/config";
 ---
 
-<Layout title="Mastwal Mesfin | Software Engineer">
-  <Hero />
-  <Skills />
-  <Projects />
-  <Experience />
-  <GithubDashboard />
+<Layout title={`${config.identity.name} | ${config.identity.role}`}>
+  <div class="fade-in">
+    <Hero />
+  </div>
 
-  <footer class="py-12 text-center text-ui-400 text-sm font-mono">
-    <p>
-      &copy; {new Date().getFullYear()} Mastwal Mesfin. Built with Astro & Tailwind.
-    </p>
-  </footer>
+  <div class="fade-in">
+    <About />
+  </div>
+
+  <div class="fade-in">
+    <Skills />
+  </div>
+
+  <div class="fade-in">
+    <Projects />
+  </div>
+
+  <div class="fade-in">
+    <Experience />
+  </div>
+
+  <div class="fade-in">
+    <GithubDashboard />
+  </div>
 </Layout>

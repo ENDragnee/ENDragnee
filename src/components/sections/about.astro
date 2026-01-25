@@ -1,0 +1,53 @@
+---
+import { config } from "../../data/config";
+import { UserCircle } from "lucide-react";
+---
+
+<section id="about" class="py-20 border-t border-ui-100 dark:border-ui-900">
+  <div class="flex items-center gap-2 mb-12 text-crimson-500 font-mono">
+    <UserCircle size={20} />
+    <h2 class="text-xl uppercase tracking-widest">Personal Profile</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+    {/* Image Column */}
+    <div class="md:col-span-4">
+      <div class="relative group">
+        <div
+          class="absolute -inset-1 bg-gradient-to-r from-crimson-600 to-crimson-800 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition duration-300"
+        >
+        </div>
+        <img
+          src="/profile.png"
+          alt={config.identity.name}
+          class="relative w-full h-auto rounded-lg shadow-lg"
+          width="400"
+          height="400"
+        />
+      </div>
+    </div>
+
+    {/* Text Content Column */}
+    <div class="md:col-span-8 space-y-6">
+      <p class="text-xl text-ui-700 dark:text-ui-300 leading-relaxed">
+        Experienced software engineer and business founder specializing in
+        <span class="font-bold text-crimson-500 dark:text-crimson-400"
+          >backend development and Linux systems</span
+        >. Strong background in Python, JavaScript/TypeScript, and PHP, with
+        hands-on experience in system configuration, containerized environments,
+        and networking.
+      </p>
+      <p class="text-lg text-ui-600 dark:text-ui-400 leading-relaxed">
+        Focused on building reliable, efficient, and maintainable software that
+        solves real-world problems. My passion lies at the intersection of
+        powerful systems architecture and elegant user-facing applications.
+      </p>
+      <a
+        href={`mailto:${config.identity.email}`}
+        class="inline-block font-mono text-crimson-500 hover:text-crimson-600 dark:hover:text-crimson-400 underline decoration-dotted underline-offset-4 transition-colors"
+      >
+        Get in Touch &rarr;
+      </a>
+    </div>
+  </div>
+</section>

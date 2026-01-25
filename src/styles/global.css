@@ -33,6 +33,7 @@
 }
 
 @layer utilities {
+  /* Custom Dashboard Scrollbar */
   .scrollbar-dashboard::-webkit-scrollbar {
     width: 8px;
   }
@@ -45,5 +46,73 @@
   }
   .scrollbar-dashboard::-webkit-scrollbar-thumb:hover {
     background: var(--color-crimson-500);
+  }
+
+  /* --- NEW: Interactive Slanted Grid & Mouse Glow --- */
+  .background-grid-interactive {
+    --grid-color-light: hsla(220, 10%, 80%, 0.2);
+    --grid-color-dark: hsla(220, 14%, 20%, 0.5);
+    --accent-glow-color: hsla(348, 83%, 47%, 0.15); /* Transparent Crimson */
+
+    background-image:
+      /* 1. Mouse Glow (controlled by JS) */
+      radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        var(--accent-glow-color) 0%,
+        transparent 20%
+      ),
+      /* 2. Slanted Grid Lines (45deg) */
+        repeating-linear-gradient(
+          45deg,
+          var(--grid-color-light) 0,
+          var(--grid-color-light) 1px,
+          transparent 1px,
+          transparent 3.5rem /* Grid size */
+        ),
+      /* 3. Slanted Grid Lines (-45deg) */
+        repeating-linear-gradient(
+          -45deg,
+          var(--grid-color-light) 0,
+          var(--grid-color-light) 1px,
+          transparent 1px,
+          transparent 3.5rem
+        );
+  }
+
+  /* Dark mode variant for the interactive grid */
+  .dark .background-grid-interactive {
+    background-image:
+      radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        var(--accent-glow-color) 0%,
+        transparent 20%
+      ),
+      repeating-linear-gradient(
+        45deg,
+        var(--grid-color-dark) 0,
+        var(--grid-color-dark) 1px,
+        transparent 1px,
+        transparent 3.5rem
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        var(--grid-color-dark) 0,
+        var(--grid-color-dark) 1px,
+        transparent 1px,
+        transparent 3.5rem
+      );
+  }
+
+  /* Animation for elements scrolling into view */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

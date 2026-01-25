@@ -1,0 +1,47 @@
+---
+import { config } from "../../data/config";
+import { Github, Linkedin, Send } from "lucide-react"; // Using 'Send' for Telegram/Mail
+---
+
+<footer
+  class="w-full max-w-5xl mx-auto px-6 sm:px-12 py-8 mt-20 border-t border-ui-100 dark:border-ui-900"
+>
+  <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+    <!-- Left Side: Copyright -->
+    <div class="text-sm text-ui-500 dark:text-ui-400 font-mono">
+      &copy; {new Date().getFullYear()}
+      {config.identity.name}. All Rights Reserved.
+    </div>
+
+    <!-- Right Side: Social Links -->
+    <div class="flex items-center gap-4">
+      <a
+        href={config.socials.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="text-ui-500 hover:text-crimson-500 transition-colors"
+      >
+        <Github size={22} />
+      </a>
+      <a
+        href={config.socials.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        class="text-ui-500 hover:text-crimson-500 transition-colors"
+      >
+        <Linkedin size={22} />
+      </a>
+      <a
+        href={config.socials.twitter}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Telegram"
+        class="text-ui-500 hover:text-crimson-500 transition-colors"
+      >
+        <Send size={22} />
+      </a>
+    </div>
+  </div>
+</footer>
