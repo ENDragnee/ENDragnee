@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* --- Fonts --- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* --- Color System: Crimson --- */
+  --color-crimson-100: #ffe5e9;
+  --color-crimson-200: #fbbdc5;
+  --color-crimson-300: #f594a0;
+  --color-crimson-400: #ed6a7c;
+  --color-crimson-500: #dc143c;
+  --color-crimson-600: #b80c30;
+  --color-crimson-700: #940925;
+  --color-crimson-800: #73071c;
+  --color-crimson-900: #550514;
+
+  /* --- Color System: UI --- */
+  --color-ui-50: #f9fafb;
+  --color-ui-100: #f3f4f6;
+  --color-ui-200: #e5e7eb;
+  --color-ui-300: #d1d5db;
+  --color-ui-400: #9ca3af;
+  --color-ui-500: #6b7280;
+  --color-ui-600: #4b5563;
+  --color-ui-700: #374151;
+  --color-ui-800: #1f2937;
+  --color-ui-900: #111827;
+  --color-ui-950: #0b0f19;
+}
+
+@layer utilities {
+  .scrollbar-dashboard::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scrollbar-dashboard::-webkit-scrollbar-track {
+    background: var(--color-ui-950);
+  }
+  .scrollbar-dashboard::-webkit-scrollbar-thumb {
+    background: var(--color-ui-800);
+    border-radius: 4px;
+  }
+  .scrollbar-dashboard::-webkit-scrollbar-thumb:hover {
+    background: var(--color-crimson-500);
+  }
+}
