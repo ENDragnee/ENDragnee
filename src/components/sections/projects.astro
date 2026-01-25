@@ -1,0 +1,62 @@
+---
+import { projectsData } from "../../data/projects";
+import ProjectCard from "../ui/project-card.astro";
+// 👇 Added ExternalLink here
+import { Layers, ExternalLink } from "lucide-react";
+
+const featuredProjects = projectsData.filter((p) => p.featured);
+const otherProjects = projectsData.filter((p) => !p.featured);
+---
+
+<section id="projects" class="py-20 border-t border-ui-100 dark:border-ui-900">
+  <!-- Section Header -->
+  <div class="flex items-center gap-2 mb-12 text-crimson-500 font-mono">
+    <Layers size={20} />
+    <h2 class="text-xl uppercase tracking-widest">Selected Works</h2>
+  </div>
+
+  <!-- 1. Featured Grid (Large Cards) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    {featuredProjects.map((project) => <ProjectCard project={project} />)}
+  </div>
+
+  <!-- 2. "The Archive" / Other Projects (Compact Grid) -->
+  <div class="space-y-6">
+    <h3
+      class="text-lg font-mono text-ui-900 dark:text-ui-100 flex items-center gap-2"
+    >
+      <span class="w-2 h-2 bg-crimson-500 rounded-full"></span>
+      Other Deployments & Systems
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        otherProjects.map((project) => (
+          <a
+            href={project.link}
+            target="_blank"
+            class="
+                    flex items-center justify-between p-4 rounded-lg
+                    border border-ui-200 dark:border-ui-800
+                    hover:border-crimson-500/50 hover:bg-ui-50 dark:hover:bg-ui-900
+                    transition-all duration-200 group
+                "
+          >
+            <div class="flex flex-col">
+              <span class="font-bold text-sm text-ui-800 dark:text-ui-200 group-hover:text-crimson-600 dark:group-hover:text-crimson-400">
+                {project.title}
+              </span>
+              <span class="text-xs text-ui-500 font-mono mt-1">
+                {project.tech.slice(0, 2).join(" · ")}
+              </span>
+            </div>
+            <ExternalLink
+              size={16}
+              className="text-ui-400 group-hover:text-crimson-500"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

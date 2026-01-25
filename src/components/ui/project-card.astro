@@ -1,0 +1,67 @@
+---
+import { Github, ExternalLink, FolderGit2 } from "lucide-react";
+import type { Project } from "../../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article
+  class="flex flex-col h-full
+  p-6 rounded-xl border border-ui-200 dark:border-ui-800
+  bg-ui-50 dark:bg-ui-900/40
+  hover:border-crimson-500/50 hover:bg-ui-100 dark:hover:bg-ui-900
+  transition-all duration-300 group"
+>
+  <div class="flex items-start justify-between mb-4">
+    <div class="flex items-center gap-2 text-crimson-500">
+      <FolderGit2 size={20} />
+    </div>
+
+    <div class="flex gap-3">
+      {
+        project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            aria-label="GitHub Repo"
+            class="text-ui-500 hover:text-crimson-500 transition-colors"
+          >
+            <Github size={20} />
+          </a>
+        )
+      }
+      <a
+        href={project.link}
+        target="_blank"
+        aria-label="Live Demo"
+        class="text-ui-500 hover:text-crimson-500 transition-colors"
+      >
+        <ExternalLink size={20} />
+      </a>
+    </div>
+  </div>
+
+  <h3
+    class="text-lg font-bold text-ui-900 dark:text-ui-100 mb-2 group-hover:text-crimson-500 transition-colors"
+  >
+    {project.title}
+  </h3>
+
+  <p
+    class="text-sm text-ui-600 dark:text-ui-400 mb-6 flex-grow leading-relaxed"
+  >
+    {project.description}
+  </p>
+
+  <div class="flex flex-wrap gap-2 mt-auto">
+    {
+      project.tech.map((t) => (
+        <span class="text-xs font-mono text-ui-500 dark:text-ui-500">#{t}</span>
+      ))
+    }
+  </div>
+</article>

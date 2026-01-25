@@ -1,0 +1,94 @@
+---
+import "@fontsource/inter";
+import "@fontsource/jetbrains-mono";
+import "../styles/global.css";
+import Header from "../components/sections/header.astro";
+import Footer from "../components/sections/footer.astro";
+import Seo from "../components/seo.astro"; // 👈 Import the SEO component
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Software Engineer and Founder Portfolio"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <Seo title={title} description={description} />
+
+    <!-- BLOCKING THEME SCRIPT: Prevents Flash of White -->
+    <script is:inline>
+      const getTheme = () => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      };
+
+      if (getTheme() === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      window.localStorage.setItem("theme", getTheme());
+    </script>
+  </head>
+  <body
+    class="bg-white dark:bg-ui-950 text-ui-900 dark:text-ui-100 antialiased transition-colors duration-300 scrollbar-dashboard background-grid-interactive"
+  >
+    <Header />
+    <main class="max-w-5xl mx-auto px-6 sm:px-12 py-10 sm:py-20">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      // --- Script for Fade-in Animations ---
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        },
+      );
+
+      const elementsToAnimate = document.querySelectorAll(".fade-in");
+      elementsToAnimate.forEach((el) => observer.observe(el));
+
+      // --- Script for Interactive Mouse Glow ---
+      const body = document.querySelector("body");
+
+      if (body) {
+        if (window.matchMedia("(pointer: fine)").matches) {
+          body.addEventListener("mousemove", (e) => {
+            const { clientX, clientY } = e;
+            body.style.setProperty("--mouse-x", `${clientX}px`);
+            body.style.setProperty("--mouse-y", `${clientY}px`);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

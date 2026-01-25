@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* --- Fonts --- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* --- Color System: Crimson --- */
+  --color-crimson-100: #ffe5e9;
+  --color-crimson-200: #fbbdc5;
+  --color-crimson-300: #f594a0;
+  --color-crimson-400: #ed6a7c;
+  --color-crimson-500: #dc143c;
+  --color-crimson-600: #b80c30;
+  --color-crimson-700: #940925;
+  --color-crimson-800: #73071c;
+  --color-crimson-900: #550514;
+
+  /* --- Color System: UI --- */
+  --color-ui-50: #f9fafb;
+  --color-ui-100: #f3f4f6;
+  --color-ui-200: #e5e7eb;
+  --color-ui-300: #d1d5db;
+  --color-ui-400: #9ca3af;
+  --color-ui-500: #6b7280;
+  --color-ui-600: #4b5563;
+  --color-ui-700: #374151;
+  --color-ui-800: #1f2937;
+  --color-ui-900: #111827;
+  --color-ui-950: #0b0f19;
+}
+
+@layer utilities {
+  /* Custom Dashboard Scrollbar */
+  .scrollbar-dashboard::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scrollbar-dashboard::-webkit-scrollbar-track {
+    background: var(--color-ui-950);
+  }
+  .scrollbar-dashboard::-webkit-scrollbar-thumb {
+    background: var(--color-ui-800);
+    border-radius: 4px;
+  }
+  .scrollbar-dashboard::-webkit-scrollbar-thumb:hover {
+    background: var(--color-crimson-500);
+  }
+
+  /* --- NEW: Interactive Slanted Grid & Mouse Glow --- */
+  .background-grid-interactive {
+    --grid-color-light: hsla(220, 10%, 80%, 0.2);
+    --grid-color-dark: hsla(220, 14%, 20%, 0.5);
+    --accent-glow-color: hsla(348, 83%, 47%, 0.15); /* Transparent Crimson */
+
+    background-image:
+      /* 1. Mouse Glow (controlled by JS) */
+      radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        var(--accent-glow-color) 0%,
+        transparent 20%
+      ),
+      /* 2. Slanted Grid Lines (45deg) */
+        repeating-linear-gradient(
+          45deg,
+          var(--grid-color-light) 0,
+          var(--grid-color-light) 1px,
+          transparent 1px,
+          transparent 3.5rem /* Grid size */
+        ),
+      /* 3. Slanted Grid Lines (-45deg) */
+        repeating-linear-gradient(
+          -45deg,
+          var(--grid-color-light) 0,
+          var(--grid-color-light) 1px,
+          transparent 1px,
+          transparent 3.5rem
+        );
+  }
+
+  /* Dark mode variant for the interactive grid */
+  .dark .background-grid-interactive {
+    background-image:
+      radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        var(--accent-glow-color) 0%,
+        transparent 20%
+      ),
+      repeating-linear-gradient(
+        45deg,
+        var(--grid-color-dark) 0,
+        var(--grid-color-dark) 1px,
+        transparent 1px,
+        transparent 3.5rem
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        var(--grid-color-dark) 0,
+        var(--grid-color-dark) 1px,
+        transparent 1px,
+        transparent 3.5rem
+      );
+  }
+
+  /* Animation for elements scrolling into view */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

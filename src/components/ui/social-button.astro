@@ -1,0 +1,38 @@
+---
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+
+interface Props {
+  href: string;
+  icon: "github" | "linkedin" | "twitter" | "mail";
+  label: string;
+}
+
+const { href, icon, label } = Astro.props;
+
+const IconMap = {
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  mail: Mail,
+};
+
+const IconComponent = IconMap[icon];
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={label}
+  class="group flex items-center justify-center p-3 rounded-lg
+    bg-ui-50 dark:bg-ui-900 border border-ui-200 dark:border-ui-800
+    text-ui-500 dark:text-ui-400
+    hover:border-crimson-500/50 hover:text-crimson-600 dark:hover:text-crimson-400
+    hover:bg-ui-100 dark:hover:bg-ui-800
+    transition-all duration-200"
+>
+  <IconComponent
+    size={20}
+    className="transition-transform group-hover:scale-110"
+  />
+</a>
