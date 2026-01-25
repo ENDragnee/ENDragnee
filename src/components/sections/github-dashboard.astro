@@ -1,0 +1,165 @@
+---
+import { getGithubProfile, getGithubContributions } from "../../lib/github";
+import GithubHeatmap from "./github-heatmap";
+import { GitCommit, Github, MapPin, Terminal } from "lucide-react";
+import { format } from "date-fns";
+
+const username = "ENDragnee";
+const token = import.meta.env.GITHUB_TOKEN;
+const [profile, contributionData] = await Promise.all([
+  getGithubProfile(username),
+  getGithubContributions(username, token),
+]);
+
+// Helper function to format the 'Member Since' date
+const formatDate = (isoString: string | undefined) => {
+  if (!isoString) return "N/A";
+  try {
+    return format(new Date(isoString), "MMM yyyy");
+  } catch (e) {
+    return "Invalid Date";
+  }
+};
+---
+
+<section id="github" class="py-20">
+  <!-- Section Header -->
+  <div class="flex items-center gap-2 mb-12 text-crimson-500 font-mono">
+    <Github size={20} />
+    <h2 class="text-xl uppercase tracking-widest">Open Source Intelligence</h2>
+  </div>
+
+  <div
+    class="rounded-xl border border-ui-200 dark:border-ui-800 bg-white dark:bg-ui-950 overflow-hidden shadow-sm"
+  >
+    {/* --- Part 1: Server-Side Profile Header --- */}
+    <div
+      class="p-6 md:p-8 border-b border-ui-100 dark:border-ui-900 bg-ui-50/50 dark:bg-ui-900/20"
+    >
+      {
+        profile ? (
+          <div class="flex flex-col md:flex-row gap-8 items-start md:items-center">
+            {/* Avatar & Identity Section */}
+            <div class="flex items-center gap-6 flex-1">
+              <img
+                src={profile.avatar_url}
+                alt={profile.name || profile.login}
+                class="w-20 h-20 rounded-full border-2 border-ui-200 dark:border-ui-700 shadow-md"
+              />
+              <div>
+                <h3 class="text-2xl font-bold text-ui-900 dark:text-ui-50 leading-none">
+                  {profile.name || profile.login}
+                </h3>
+                <a
+                  href={profile.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-mono text-crimson-500 hover:text-crimson-600 text-sm mt-1 block"
+                >
+                  @{profile.login}
+                </a>
+                {profile.bio && (
+                  <p class="text-ui-600 dark:text-ui-400 text-sm mt-2 max-w-md leading-relaxed">
+                    {profile.bio}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Quick Stats Grid Section */}
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full md:w-auto">
+              <div class="flex flex-col">
+                <span class="text-xs font-mono text-ui-500 uppercase tracking-wider">
+                  Repos
+                </span>
+                <span class="text-2xl font-bold text-ui-900 dark:text-ui-100">
+                  {profile.public_repos}
+                </span>
+              </div>
+
+              <div class="flex flex-col">
+                <span class="text-xs font-mono text-ui-500 uppercase tracking-wider">
+                  Followers
+                </span>
+                <span class="text-2xl font-bold text-ui-900 dark:text-ui-100">
+                  {profile.followers}
+                </span>
+              </div>
+
+              <div class="flex flex-col">
+                <span class="text-xs font-mono text-ui-500 uppercase tracking-wider">
+                  Following
+                </span>
+                <span class="text-2xl font-bold text-ui-900 dark:text-ui-100">
+                  {profile.following}
+                </span>
+              </div>
+
+              <div class="flex flex-col">
+                <span class="text-xs font-mono text-ui-500 uppercase tracking-wider">
+                  Since
+                </span>
+                <span class="text-lg font-bold text-ui-900 dark:text-ui-100 whitespace-nowrap">
+                  {formatDate(profile.created_at)}
+                </span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div class="text-center text-red-500 font-mono text-sm py-4">
+            [Error] Failed to retrieve GitHub Profile Data. API rate limit may
+            have been reached.
+          </div>
+        )
+      }
+    </div>
+
+    {/* --- Part 2: Client-Side Interactive Charts --- */}
+    <div class="p-6 md:p-8">
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-2 text-sm font-mono text-ui-500">
+          <GitCommit size={16} />
+          <span>Activity Visualization</span>
+        </div>
+        <div
+          class="flex items-center gap-2 text-xs font-mono text-green-500 bg-green-500/10 px-2 py-1 rounded"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"
+            ></span>
+          </span>
+          LIVE DATA
+        </div>
+      </div>
+
+      <GithubHeatmap
+        client:visible
+        heatmapData={contributionData?.heatmap}
+        statsData={contributionData?.stats}
+      />
+    </div>
+
+    {/* --- Part 3: Decorative Terminal Footer --- */}
+    <div
+      class="bg-ui-950 border-t border-ui-800 p-3 flex items-center justify-between text-xs font-mono text-ui-400"
+    >
+      <div class="flex items-center gap-2">
+        <Terminal size={14} />
+        <span>git status</span>
+      </div>
+      <div class="flex gap-4">
+        <span>branch: <span class="text-crimson-400">main</span></span>
+        {
+          profile && profile.location && (
+            <span class="hidden sm:inline-flex items-center gap-1">
+              <MapPin size={12} /> {profile.location}
+            </span>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

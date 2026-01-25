@@ -4,6 +4,8 @@ import Hero from "../components/sections/hero.astro";
 import Projects from "../components/sections/projects.astro";
 import Experience from "../components/sections/experience.astro";
 import Skills from "../components/sections/skills.astro";
+// 👇 Add Import
+import GithubDashboard from "../components/sections/github-dashboard.astro";
 ---
 
 <Layout title="Mastwal Mesfin | Software Engineer">
@@ -11,10 +13,11 @@ import Skills from "../components/sections/skills.astro";
   <Skills />
   <Projects />
   <Experience />
+  <GithubDashboard />
 
-  <section class="py-20 text-center border-t border-ui-100 dark:border-ui-900">
-    <p class="font-mono text-ui-400">
-      (Phase 5: GitHub API Integration Next...)
+  <footer class="py-12 text-center text-ui-400 text-sm font-mono">
+    <p>
+      &copy; {new Date().getFullYear()} Mastwal Mesfin. Built with Astro & Tailwind.
     </p>
-  </section>
+  </footer>
 </Layout>
