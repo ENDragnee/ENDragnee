@@ -1,0 +1,5 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://mastwal-mesfin.vercel.app/sitemap-0.xml
