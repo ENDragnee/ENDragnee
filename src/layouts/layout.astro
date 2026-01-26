@@ -4,7 +4,7 @@ import "@fontsource/jetbrains-mono";
 import "../styles/global.css";
 import Header from "../components/sections/header.astro";
 import Footer from "../components/sections/footer.astro";
-import Seo from "../components/seo.astro"; // 👈 Import the SEO component
+import Seo from "../components/seo.astro";
 
 interface Props {
   title: string;
@@ -73,16 +73,21 @@ const { title, description } = Astro.props;
           threshold: 0.1,
         },
       );
-
       const elementsToAnimate = document.querySelectorAll(".fade-in");
       elementsToAnimate.forEach((el) => observer.observe(el));
 
       // --- Script for Interactive Mouse Glow ---
       const body = document.querySelector("body");
-
       if (body) {
+        let mouseHasMoved = false;
+
         if (window.matchMedia("(pointer: fine)").matches) {
           body.addEventListener("mousemove", (e) => {
+            if (!mouseHasMoved) {
+              body.classList.add("mouse-has-moved");
+              mouseHasMoved = true;
+            }
+
             const { clientX, clientY } = e;
             body.style.setProperty("--mouse-x", `${clientX}px`);
             body.style.setProperty("--mouse-y", `${clientY}px`);
