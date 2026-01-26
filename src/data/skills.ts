@@ -9,12 +9,16 @@ export const skillData: SkillCategory[] = [
     skills: [
       "TypeScript",
       "Python",
+      "C",
       "C++",
       "PHP",
       "Lua",
       "Java",
       "Dart",
       "Bash/Shell",
+      "HTML",
+      "CSS",
+      "JavaScript",
     ],
   },
   {
@@ -22,6 +26,7 @@ export const skillData: SkillCategory[] = [
     skills: [
       "Next.js",
       "React",
+      "Astro",
       "Tailwind CSS",
       "Flutter",
       "Qt (C++ & Python)",
@@ -35,6 +40,7 @@ export const skillData: SkillCategory[] = [
       "Django",
       "Laravel",
       "FastAPI",
+      "REST",
       "GraphQL",
       "WebSockets",
       "Prisma",
@@ -46,6 +52,10 @@ export const skillData: SkillCategory[] = [
     skills: [
       "NixOS",
       "Arch Linux",
+      "Debian/Ubuntu",
+      "Fedora/RHEL",
+      "SystemD",
+      "OpenRC",
       "Docker",
       "Kubernetes",
       "NGINX",
@@ -55,6 +65,14 @@ export const skillData: SkillCategory[] = [
   },
   {
     title: "Databases",
-    skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL/MariaDB", "InfluxDB"],
+    skills: [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "MySQL/MariaDB",
+      "InfluxDB",
+      "IndexDB",
+      "SQLite",
+    ],
   },
 ];
