@@ -37,6 +37,9 @@ export const skillData: SkillCategory[] = [
     title: "Backend & Systems",
     skills: [
       "Node.js",
+      "Supabase",
+      "PowerSync",
+      "Local-First Architecture",
       "Django",
       "Laravel",
       "FastAPI",
@@ -44,6 +47,7 @@ export const skillData: SkillCategory[] = [
       "GraphQL",
       "WebSockets",
       "Prisma",
+      "Drift (SQLite ORM)",
       "Apache Kafka",
     ],
   },
