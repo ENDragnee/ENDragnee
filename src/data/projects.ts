@@ -10,6 +10,14 @@ export interface Project {
 export const projectsData: Project[] = [
   // --- FEATURED ---
   {
+    title: "Laundry Manager",
+    description:
+      "A professional offline-first SaaS for laundry business management. Featuring real-time cloud synchronization, multi-tier account logic (Trial/Regular/Premium), and a resilient architecture that works 100% offline.",
+    tech: ["Flutter", "Supabase", "PowerSync", "Drift (SQLite)", "PostgreSQL"],
+    link: "https://mastwal-mesfin.vercel.app/", // You can update this to the specific demo link later
+    featured: true,
+  },
+  {
     title: "Addis Information Highway",
     description:
       "A centralized trust broker system enabling secure data sharing between institutions. Includes a mobile app and web platform.",
