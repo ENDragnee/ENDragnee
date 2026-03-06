@@ -1,31 +1,31 @@
 <!-- Header -->
-<h1 align="center">👋 Name's, <strong>Mastwal Mesfin</strong></h1>
+<h1 align="center">Name's, <strong>Mastwal Mesfin</strong></h1>
 <h2 align="center"><strong>Co-Founder and CTO of ASCII Technologies PLC.</strong></h2>
 <p align="center">
   <img src="./public/ascii.png" alt="ASCII Technologies Company Logo" width="200" />
 </p>
 
 <p align="center">
-    Full-stack Developer · Next.js · TypeScript · Prisma · DevOps . Laravel . Django . QT . C++ . Flutter . Nix . Python . Java . Shell. LUA
+    Next.js · TypeScript · Prisma · Laravel . Django . C++ . Flutter . Nix . Python . Java . Shell. LUA . C . Golang . Dart . Hono . Astro
 </p>
 
 ---
 
-## 🚀 About Me
+## About Me
 
-- ⚡ Building real-time & production-grade web apps
-- 🐧 Linux expert (Arch, NixOS, Debian, server optimization)
-- 🛠️ Love declarative infra — especially **NixOS**
-- 🗒 Focused on **Offline-First / Local-First architectures**, enterprise management systems, and SaaS ecosystems
-- 📦 Experience with PowerSync, WebSockets, Docker, Prisma, Redis, and REST APIs
-- 🌱 Currently learning advanced DevOps and system architecture
-- 🌱 Learning advanced backend architecture & distributed systems
-- 🧩 Love solving complex problems and optimizing workflows
-- Favourite languages are C++, Python and Nix
+- Building real-time & production-grade web apps
+- Linux expert (Arch, NixOS, Debian, server optimization)
+- Love declarative infra — especially **NixOS**
+- Focused on **Offline-First / Local-First architectures**, enterprise management systems, and SaaS ecosystems
+- Experience with PowerSync, WebSockets, Docker, Prisma, Redis, and REST APIs
+- Currently learning advanced DevOps and system architecture
+- Learning advanced backend architecture & distributed systems
+- Love solving complex problems and optimizing workflows
+- Favourite languages are C, Python and Golang
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### **Frontend**
 
@@ -72,15 +72,7 @@
 
 ---
 
-## 🔥 Top Technologies
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ENDragnee&layout=compact&theme=tokyonight" />
-</p>
-
----
-
-## 🌐 Connect With Me
+## Connect With Me
 
 <p>
   <a href="https://t.me/Redglance"><img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram" /></a>
