@@ -1,13 +1,20 @@
 ---
 import { config } from "../../data/config";
 import SocialButton from "../ui/social-button.astro";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, Terminal, Calendar, ExternalLink } from "lucide-react";
+
+// Sort occupations chronologically: current roles first, then by start year descending
+const sortedOccupations = [...config.listOfOccupations].sort((a, b) => {
+  if (a.current && !b.current) return -1;
+  if (!a.current && b.current) return 1;
+  return parseInt(b.fromDate) - parseInt(a.fromDate);
+});
 ---
 
 <section id="hero" class="flex flex-col gap-12 py-12 md:py-24">
   <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
     {/* --- Left Column: Intro --- */}
-    <div class="md:col-span-8 flex flex-col gap-8 order-2 md:order-1">
+    <div class="md:col-span-7 flex flex-col gap-8 order-2 md:order-1">
       {/* Terminal Header decoration */}
       <div
         class="flex items-center gap-2 text-crimson-500 font-mono text-sm mb-2"
@@ -64,14 +71,14 @@ import { ArrowRight, Terminal } from "lucide-react";
       </div>
     </div>
 
-    {/* --- Right Column: Status Cards --- */}
-    <div class="md:col-span-4 space-y-4 order-1 md:order-2">
+    {/* --- Right Column: Status & Experience Timeline --- */}
+    <div class="md:col-span-5 space-y-6 order-1 md:order-2">
       {/* Status Card */}
       <div
-        class="p-6 rounded-xl border border-ui-200 dark:border-ui-800
+        class="p-5 rounded-xl border border-ui-200 dark:border-ui-800
             bg-ui-50/50 dark:bg-ui-900/50 backdrop-blur-sm"
       >
-        <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center justify-between mb-3">
           <span class="text-xs font-mono uppercase tracking-wider text-ui-500"
             >System Status</span
           >
@@ -84,28 +91,73 @@ import { ArrowRight, Terminal } from "lucide-react";
             ></span>
           </span>
         </div>
-        <p class="font-medium text-ui-900 dark:text-ui-100">
+        <p class="font-medium text-ui-900 dark:text-ui-100 text-sm">
           {config.status.message}
         </p>
       </div>
 
-      {/* Current Focus Card */}
-      <div
-        class="p-6 rounded-xl border border-ui-200 dark:border-ui-800
-            bg-white dark:bg-ui-950"
-      >
-        <span
-          class="text-xs font-mono uppercase tracking-wider text-ui-500 block mb-2"
-        >
-          Current Role
-        </span>
-        <div class="flex flex-col">
-          <span class="font-bold text-lg text-ui-900 dark:text-ui-100">
-            {config.currentWork.company}
+      {/* Experience History Track */}
+      <div class="space-y-4">
+        <div class="flex items-center justify-between px-1">
+          <span class="text-xs font-mono uppercase tracking-wider text-ui-500 block">
+            Experience History
           </span>
-          <span class="text-sm text-ui-600 dark:text-ui-400">
-            {config.currentWork.role}
+          <span class="text-[10px] font-mono text-crimson-500 dark:text-crimson-400 uppercase tracking-widest">
+            {config.listOfOccupations.filter(j => j.current).length} Active
           </span>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          {sortedOccupations.map((job) => (
+            <div
+              class={`p-5 rounded-xl border transition-all duration-300 relative group
+                ${job.current 
+                  ? "border-crimson-500/30 dark:border-crimson-500/40 bg-linear-to-br from-white to-crimson-50/10 dark:from-ui-950 dark:to-crimson-950/10 shadow-sm" 
+                  : "border-ui-200 dark:border-ui-800 bg-white dark:bg-ui-950 opacity-75 hover:opacity-100"
+                }`}
+            >
+              {/* Highlight dot for active roles */}
+              {job.current && (
+                <span class="absolute top-5 right-5 flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-crimson-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-crimson-500"></span>
+                </span>
+              )}
+
+              <div class="flex flex-col gap-1 pr-6">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="font-bold text-ui-900 dark:text-ui-100 group-hover:text-crimson-500 dark:group-hover:text-crimson-400 transition-colors">
+                    {job.company}
+                  </span>
+                  {job.link && (
+                    <a 
+                      href={job.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="text-ui-400 hover:text-ui-600 dark:hover:text-ui-200 transition-colors"
+                      aria-label={`Visit ${job.company} website`}
+                    >
+                      <ExternalLink size={13} />
+                    </a>
+                  )}
+                </div>
+
+                <span class="text-sm font-medium text-ui-700 dark:text-ui-300">
+                  {job.role}
+                </span>
+
+                <div class="flex items-center gap-1.5 text-xs text-ui-400 dark:text-ui-500 font-mono mt-2">
+                  <Calendar size={12} />
+                  <span>{job.fromDate} — {job.current ? "Present" : job.endDate}</span>
+                  {job.current && (
+                    <span class="ml-1.5 px-1.5 py-0.5 rounded text-[10px] font-sans font-semibold uppercase tracking-wider bg-crimson-100 dark:bg-crimson-950 text-crimson-700 dark:text-crimson-300">
+                      Active
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

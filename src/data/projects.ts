@@ -10,6 +10,13 @@ export interface Project {
 export const projectsData: Project[] = [
   // --- FEATURED ---
   {
+    title: "Graphics designer's Portfolio",
+    description: "A portfolio page for Kaleab dedicated for kaleab tamiru",
+    tech: ["Astro", "Tailwindcss", "React"],
+    link: "https://kaleab-tamiru-astro.vercel.app",
+    featured: true,
+  },
+  {
     title: "AASTU Dormitory and Slip Management System",
     description:
       "Exit pass generation and Dormitory, Exit, Blocks, Gateway, Locations, Onboarding management system.",
