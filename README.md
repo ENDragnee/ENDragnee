@@ -1,30 +1,19 @@
-<!-- Header -->
-<h1 align="center">The name is:, <strong>Mastwal Mesfin</strong></h1>
-<h2 align="center">Currently: <strong>CTO at Yenesew</strong></h2>
-<h2 align="center"><strong>Co-Founder of ASCII Technologies PLC.</strong></h2>
+# Hey, I'm Mastwal 👋
 
-<p align="center">
-    Next.js . Nest.js . Astro . Laravel . 
-</p>
+I like backend, Linux, and C. Frontend is a necessary evil.
 
----
+Currently CTO at Yenesew, co-founder of ASCII Technologies, and occasionally a cloud engineer when the servers ask nicely.
 
-## About Me
+## What I'm about
 
-- Building real-time & production-grade web apps
-- Love making cli applications and datastructures using C (Hobby of mine)
-- Linux expert (Arch, NixOS, Debian, Fedora e.t.c, you name it)
-- Love declarative infra — especially **NixOS**
-- Focused on enterprise management systems, and SaaS ecosystems
-- Favourite languages is C, the rest are okay.
+- Building real-time, production-grade web apps — mostly Next.js, Astro, and Nest.js
+- Writing CLIs and data structures in C for fun (yes, really, for fun)
+- Running Linux on everything — Arch, NixOS, Debian, Fedora, you name it
+- A little too in love with declarative infra, especially **NixOS**
+- Focused on enterprise systems and SaaS that actually ships
+- C is my favorite language. The rest are just... fine.
 
----
+## Elsewhere
 
-## Connect With Me
-
-<p>
-  <a href="https://t.me/MastwalMesfin"><img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://mastwal-mesfin.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel" /></a>
-</p>
-
----
+- [Telegram](https://t.me/MastwalMesfin)
+- [Portfolio](https://mastwal-mesfin.vercel.app)

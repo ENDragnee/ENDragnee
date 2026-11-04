@@ -1,61 +1,54 @@
 ---
 import { projectsData } from "../../data/projects";
 import ProjectCard from "../ui/project-card.astro";
-import { Layers, ExternalLink } from "lucide-react";
+import { ChevronDown, ExternalLink } from "lucide-react";
 
-const featuredProjects = projectsData.filter((p) => p.featured);
-const otherProjects = projectsData.filter((p) => !p.featured);
+const featured = projectsData.filter((p) => p.featured);
+const more = projectsData.filter((p) => !p.featured);
 ---
 
-<section id="projects" class="py-20 border-t border-ui-100 dark:border-ui-900">
-  <!-- Section Header -->
-  <div class="flex items-center gap-2 mb-12 text-crimson-500 font-mono">
-    <Layers size={20} />
-    <h2 class="text-xl uppercase tracking-widest">Selected Works</h2>
+<section id="projects" class="py-10 md:py-16 border-t border-hairline scroll-mt-20 md:scroll-mt-0">
+  <h2 class="text-xs font-medium uppercase tracking-widest text-ink mb-6 md:mb-10">Projects</h2>
+
+  <div class="flex flex-col">
+    {featured.map((project, i) => <ProjectCard project={project} isFirst={i === 0} />)}
   </div>
 
-  <!-- 1. Featured Grid (Large Cards) -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-    {featuredProjects.map((project) => <ProjectCard project={project} />)}
-  </div>
-
-  <!-- 2. "The Archive" / Other Projects (Compact Grid) -->
-  <div class="space-y-6">
-    <h3
-      class="text-lg font-mono text-ui-900 dark:text-ui-100 flex items-center gap-2"
+  <details class="group mt-2 pt-2 border-t border-hairline">
+    <summary
+      class="flex items-center gap-2 py-4 min-h-11 text-sm text-muted hover:text-ink active:text-ink transition-colors cursor-pointer select-none [&::-webkit-details-marker]:hidden list-none"
     >
-      <span class="w-2 h-2 bg-crimson-500 rounded-full"></span>
-      Other Deployments & Systems
-    </h3>
+      <ChevronDown
+        size={14}
+        className="transition-transform group-open:rotate-180"
+      />
+      <span>{more.length} more projects</span>
+    </summary>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="flex flex-col">
       {
-        otherProjects.map((project) => (
+        more.map((project) => (
           <a
             href={project.link}
             target="_blank"
-            class="
-                    flex items-center justify-between p-4 rounded-lg
-                    border border-ui-200 dark:border-ui-800
-                    hover:border-crimson-500/50 hover:bg-ui-50 dark:hover:bg-ui-900
-                    transition-all duration-200 group
-                "
+            rel="noopener noreferrer"
+            class="flex items-center justify-between gap-4 py-3 min-h-11 border-t border-hairline group/row hover:text-accent active:text-accent transition-colors"
           >
-            <div class="flex flex-col">
-              <span class="font-bold text-sm text-ui-800 dark:text-ui-200 group-hover:text-crimson-600 dark:group-hover:text-crimson-400">
+            <span class="flex flex-col sm:flex-row sm:items-baseline sm:gap-3 min-w-0">
+              <span class="font-medium text-ink group-hover/row:text-accent transition-colors truncate">
                 {project.title}
               </span>
-              <span class="text-xs text-ui-500 font-mono mt-1">
-                {project.tech.slice(0, 2).join(" · ")}
+              <span class="text-sm text-muted truncate">
+                {project.tech.join(" · ")}
               </span>
-            </div>
+            </span>
             <ExternalLink
-              size={16}
-              className="text-ui-400 group-hover:text-crimson-500"
+              size={14}
+              className="text-muted group-hover/row:text-accent transition-colors shrink-0"
             />
           </a>
         ))
       }
     </div>
-  </div>
+  </details>
 </section>

@@ -1,9 +1,9 @@
 export const config = {
   identity: {
     name: "Mastwal Mesfin",
-    role: "Software Engineer & Founder",
+    role: "Fullstack Web Developer",
     tagline:
-      "Specializing in backend architecture, distributed systems, and declarative infrastructure (NixOS).",
+      "Fullstack web developer working in TypeScript — Next.js, NestJS, and Astro — with a strong Linux background.",
     email: "mesfinmastwal@gmail.com",
   },
   socials: {
@@ -33,9 +33,31 @@ export const config = {
       endDate: "2026",
     },
     {
+      company: "Echo Technologies PLC",
+      role: "Cloud Engineer",
+      current: false,
+      fromDate: "2026",
+      endDate: "2026",
+    },
+    {
       company: "Yenesew/Afalagi",
-      role: "Cheif Technical Officer",
+      role: "Chief Technical Officer",
       link: "https://idyllic-cassata-dde001.netlify.app",
+      current: true,
+      fromDate: "2026",
+      endDate: "-",
+    },
+    {
+      company: "ETM Software PLC",
+      role: "Fullstack Web Developer",
+      current: true,
+      primary: true,
+      fromDate: "2026",
+      endDate: "-",
+    },
+    {
+      company: "Mela Software Solutions",
+      role: "Frontend Engineer (Egre Menged)",
       current: true,
       fromDate: "2026",
       endDate: "-",

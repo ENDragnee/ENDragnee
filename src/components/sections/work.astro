@@ -1,0 +1,39 @@
+---
+import { otherWorkData } from "../../data/history";
+---
+
+<section id="work" class="py-10 md:py-16 border-t border-hairline scroll-mt-20 md:scroll-mt-0">
+  <h2 class="text-xs font-medium uppercase tracking-widest text-ink mb-6 md:mb-10">Work</h2>
+
+  <div class="flex flex-col">
+    {
+      otherWorkData.map((item, i) => (
+        <div class={`py-6 md:py-8 ${i > 0 ? "border-t border-hairline" : ""}`}>
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+            <h3 class="text-lg font-bold text-ink">
+              {item.link ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-accent transition-colors"
+                >
+                  {item.company}
+                </a>
+              ) : (
+                item.company
+              )}
+            </h3>
+            <span class="text-sm text-muted">{item.date}</span>
+          </div>
+
+          <div class="text-sm text-muted mb-3">{item.title}</div>
+
+          <p class="text-base text-ink/90 leading-relaxed max-w-xl">
+            {item.description}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>

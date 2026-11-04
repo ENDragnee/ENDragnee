@@ -1,0 +1,116 @@
+---
+import { config } from "../../data/config";
+import SocialButton from "../ui/social-button.astro";
+import ThemeToggle from "../ui/theme-toggle.astro";
+
+const firstName = config.identity.name.split(" ")[0];
+const primaryJob = config.listOfOccupations.find((j) => j.primary);
+
+const navItems = [
+  { index: "01", label: "Experience", href: "#experience" },
+  { index: "02", label: "Skills", href: "#skills" },
+  { index: "03", label: "Projects", href: "#projects" },
+  { index: "04", label: "Work", href: "#work" },
+];
+---
+
+<aside
+  class="w-full md:sticky md:top-0 md:h-screen md:w-[320px] lg:w-[380px] md:shrink-0 md:self-start
+    flex flex-col justify-between
+    px-6 sm:px-10 py-10 md:py-16 md:pl-16 lg:pl-20 md:pr-8"
+>
+  <div class="flex flex-col gap-8">
+    <h1 class="text-2xl font-bold leading-tight text-ink">
+      Hi, I'm {firstName}.
+    </h1>
+
+    <p class="text-base leading-relaxed text-muted">
+      I'm a {primaryJob?.role.toLowerCase()} at{" "}<span class="text-accent">{primaryJob?.company}</span>. I work
+      primarily in TypeScript — Next.js, NestJS, and Astro — and I'm fluent
+      in Linux systems administration.
+    </p>
+
+    <nav class="hidden md:block mt-4">
+      <ul class="flex flex-col">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current="false"
+                class="js-navlink inline-flex items-center gap-4 min-h-11 text-muted hover:text-ink transition-colors"
+              >
+                <span class="text-xs tabular-nums text-muted">
+                  {item.index}
+                </span>
+                <span class="nav-line" />
+                <span class="text-xs uppercase tracking-widest">
+                  {item.label}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="flex flex-col gap-6 mt-10 md:mt-0">
+    <div class="flex items-center gap-4">
+      <img
+        src="/profile.jpg"
+        alt={config.identity.name}
+        width="56"
+        height="56"
+        class="w-14 h-14 rounded-full object-cover"
+      />
+      <div class="flex flex-col">
+        <SocialButton
+          href={config.socials.github}
+          icon="github"
+          label="GitHub"
+        />
+        <SocialButton
+          href={config.socials.linkedin}
+          icon="linkedin"
+          label="LinkedIn"
+        />
+        <SocialButton
+          href={`mailto:${config.identity.email}`}
+          icon="mail"
+          label="Email"
+        />
+      </div>
+    </div>
+
+    <div class="flex items-center gap-4 text-xs text-muted">
+      <span>&copy; {new Date().getFullYear()} {config.identity.name}</span>
+      <ThemeToggle />
+    </div>
+  </div>
+</aside>
+
+{/* Mobile-only jump nav: the desktop sidebar nav is hidden below md, and the
+    page runs several viewports tall on a phone, so this is the only way to
+    skip between sections without blind scrolling. Sticks to the top while
+    scrolling since the aside itself isn't sticky below md. The active item
+    tracks scroll position via the script in layout.astro. */}
+<nav
+  class="md:hidden sticky top-0 z-20 bg-bg border-b border-hairline overflow-x-auto"
+>
+  <ul class="flex items-center justify-between gap-1 px-4 whitespace-nowrap">
+    {
+      navItems.map((item) => (
+        <li class="flex-1">
+          <a
+            href={item.href}
+            aria-current="false"
+            class="js-navlink flex items-center justify-center min-h-11 px-2 text-xs uppercase tracking-widest text-muted hover:text-ink transition-colors"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

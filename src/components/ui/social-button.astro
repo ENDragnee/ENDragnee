@@ -24,15 +24,8 @@ const IconComponent = IconMap[icon];
   target="_blank"
   rel="noopener noreferrer"
   aria-label={label}
-  class="group flex items-center justify-center p-3 rounded-lg
-    bg-ui-50 dark:bg-ui-900 border border-ui-200 dark:border-ui-800
-    text-ui-500 dark:text-ui-400
-    hover:border-crimson-500/50 hover:text-crimson-600 dark:hover:text-crimson-400
-    hover:bg-ui-100 dark:hover:bg-ui-800
-    transition-all duration-200"
+  class="group flex items-center gap-2.5 py-3 min-h-11 text-muted hover:text-accent active:text-accent transition-colors"
 >
-  <IconComponent
-    size={20}
-    className="transition-transform group-hover:scale-110"
-  />
+  <IconComponent size={16} />
+  <span class="text-sm">{label}</span>
 </a>
