@@ -1,9 +1,7 @@
 ---
 import "@fontsource/inter";
-import "@fontsource/jetbrains-mono";
 import "../styles/global.css";
-import Header from "../components/sections/header.astro";
-import Footer from "../components/sections/footer.astro";
+import Sidebar from "../components/sections/sidebar.astro";
 import Seo from "../components/seo.astro";
 
 interface Props {
@@ -48,16 +46,26 @@ const { title, description } = Astro.props;
 
       window.localStorage.setItem("theme", getTheme());
     </script>
-  </head>
-  <body
-    class="bg-white dark:bg-ui-950 text-ui-900 dark:text-ui-100 antialiased transition-colors duration-300 scrollbar-dashboard background-grid-interactive"
-  >
-    <Header />
-    <main class="max-w-5xl mx-auto px-6 sm:px-12 py-10 sm:py-20">
-      <slot />
-    </main>
 
-    <Footer />
+    <!-- Safety net: if JS never runs, fade-in content must not stay invisible forever. -->
+    <noscript>
+      <style>
+        .fade-in {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body class="bg-bg text-ink antialiased transition-colors duration-300">
+    <div class="relative flex flex-col w-full max-w-[1440px] mx-auto md:flex-row">
+      <Sidebar />
+      <main
+        class="w-full px-6 sm:px-10 md:px-16 lg:px-20 py-10 md:py-24 max-w-3xl"
+      >
+        <slot />
+      </main>
+    </div>
 
     <script>
       // --- Script for Fade-in Animations ---
@@ -75,24 +83,46 @@ const { title, description } = Astro.props;
       );
       const elementsToAnimate = document.querySelectorAll(".fade-in");
       elementsToAnimate.forEach((el) => observer.observe(el));
+    </script>
 
-      // --- Script for Interactive Mouse Glow ---
-      const body = document.querySelector("body");
-      if (body) {
-        let mouseHasMoved = false;
+    <script>
+      // --- Scrollspy: highlight the current section in both nav lists ---
+      const sections = [...document.querySelectorAll("main section[id]")];
+      const navLinks = [...document.querySelectorAll(".js-navlink")];
 
-        if (window.matchMedia("(pointer: fine)").matches) {
-          body.addEventListener("mousemove", (e) => {
-            if (!mouseHasMoved) {
-              body.classList.add("mouse-has-moved");
-              mouseHasMoved = true;
-            }
+      const setActive = (hash: string) => {
+        navLinks.forEach((a) => {
+          const isActive = a.getAttribute("href") === hash;
+          a.setAttribute("aria-current", isActive ? "true" : "false");
+        });
+      };
 
-            const { clientX, clientY } = e;
-            body.style.setProperty("--mouse-x", `${clientX}px`);
-            body.style.setProperty("--mouse-y", `${clientY}px`);
-          });
+      const ACTIVATION_LINE = 120; // px from the top of the viewport
+      let ticking = false;
+
+      const updateActiveSection = () => {
+        let current = sections[0];
+        for (const section of sections) {
+          if (section.getBoundingClientRect().top <= ACTIVATION_LINE) {
+            current = section;
+          }
         }
+        if (current) setActive(`#${current.id}`);
+        ticking = false;
+      };
+
+      if (sections.length && navLinks.length) {
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              requestAnimationFrame(updateActiveSection);
+              ticking = true;
+            }
+          },
+          { passive: true },
+        );
+        updateActiveSection();
       }
     </script>
   </body>

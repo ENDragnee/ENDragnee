@@ -8,178 +8,151 @@ export interface Project {
 }
 
 export const projectsData: Project[] = [
-  // --- FEATURED ---
+  // --- FEATURED: real, current, or most substantial work ---
   {
-    title: "Graphics designer's Portfolio",
-    description: "A portfolio page for Kaleab dedicated for kaleab tamiru",
-    tech: ["Astro", "Tailwindcss", "React"],
-    link: "https://kaleab-tamiru-astro.vercel.app",
+    title: "Yenesew",
+    description:
+      "A platform to match missing people, using a vector database and semantic search.",
+    tech: ["Next.js", "PostgreSQL (pgvector)", "Cohere", "Prisma"],
+    link: "https://yenesew.vercel.app",
+    github: "https://github.com/ENDragnee/yenesew",
     featured: true,
   },
   {
-    title: "AASTU Dormitory and Slip Management System",
+    title: "Rastech Stock Management",
     description:
-      "Exit pass generation and Dormitory, Exit, Blocks, Gateway, Locations, Onboarding management system.",
-    tech: ["Next.js", "QR Code", "GraphQl", "PostgreSQL", "NextAuth", "REST"],
-    link: "https://aastu-slip.vercel.app/",
+      "A stock and store management system for Rastech, a computer import and reseller business.",
+    tech: ["Next.js", "GraphQL", "Prisma", "PostgreSQL"],
+    link: "https://rastech-rouge.vercel.app",
+    github: "https://github.com/ENDragnee/rastech",
     featured: true,
   },
   {
-    title: "Laundry Manager",
+    title: "Bini Romi Productions",
     description:
-      "A professional offline-first SaaS for laundry business management. Featuring real-time cloud synchronization, multi-tier account logic (Trial/Regular/Premium), and a resilient architecture that works 100% offline.",
-    tech: ["Flutter", "Supabase", "PowerSync", "Drift (SQLite)", "PostgreSQL"],
-    link: "https://github.com/ENDragnee/laundary_management",
+      "A portfolio website with a custom CMS, built for Bini Romi Productions.",
+    tech: ["Astro", "PostgreSQL", "Prisma", "Better Auth"],
+    link: "https://biniromi.com",
+    github: "https://github.com/ENDragnee/romi-caset",
+    featured: true,
+  },
+  {
+    title: "Egre Menged",
+    description: "A crowd-powered delivery system. Working on the frontend.",
+    tech: ["Next.js", "TypeScript", "REST"],
+    link: "https://github.com/MellaSoftwareSolutions/Egre-Menged",
     featured: true,
   },
   {
     title: "Addis Information Highway",
     description:
       "A centralized trust broker system enabling secure data sharing between institutions. Includes a mobile app and web platform.",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "Flutter",
-      "Systems Architecture",
-      "REST",
-      "Nodejs",
-    ],
+    tech: ["Next.js", "TypeScript", "Flutter", "REST"],
     link: "https://addis-inforamtion-highway.vercel.app/",
     github: "https://github.com/ENDragnee/addis_information_highway_mobile",
     featured: true,
   },
   {
+    title: "Laundry Manager",
+    description:
+      "An offline-first SaaS for laundry businesses, with real-time cloud sync and a resilient architecture that works 100% offline.",
+    tech: ["Flutter", "Supabase", "PowerSync", "SQLite"],
+    link: "https://github.com/ENDragnee/laundary_management",
+    featured: true,
+  },
+
+  // --- MORE: smaller builds, client work, and university systems ---
+  {
+    title: "Graphics Designer's Portfolio",
+    description: "A portfolio site for graphic designer Kaleab Tamiru.",
+    tech: ["Astro", "React"],
+    link: "https://kaleab-tamiru-astro.vercel.app",
+  },
+  {
+    title: "AASTU Dormitory and Slip Management",
+    description:
+      "Exit-pass generation and dormitory, gateway, and onboarding management.",
+    tech: ["Next.js", "PostgreSQL"],
+    link: "https://aastu-slip.vercel.app/",
+  },
+  {
     title: "Lumo Ecosystem",
     description:
-      "A comprehensive SaaS platform for rapid learning and content creation. Comprises three distinct applications: Client, Creator Studio, and Admin Dashboard.",
-    tech: ["Next.js", "MongoDB", "Craft.js", "NextAuth", "GraphQl", "REST"],
+      "A SaaS platform for rapid learning and content creation, comprising client, creator studio, and admin apps.",
+    tech: ["Next.js", "MongoDB"],
     link: "https://easy-learning-two.vercel.app/",
-    featured: true,
   },
   {
     title: "ASCII Foods",
-    description:
-      "A modern food ordering and delivery platform tailored for local markets.",
-    tech: [
-      "Nextjs",
-      "PostgreSQL",
-      "REST",
-      "GraphQl",
-      "BetterAuth",
-      "Blackblaze",
-      "Ably",
-    ],
+    description: "A food ordering and delivery platform for local markets.",
+    tech: ["Next.js", "PostgreSQL", "GraphQL"],
     link: "https://ascii-foods.vercel.app/",
-    featured: true,
   },
-
-  //-- Personal and Good once --
-
   {
     title: "Dracula Animes",
     description:
-      "Anime streaming and discovery platform based on the micro-service architecture.",
-    tech: [
-      "Streaming",
-      "API",
-      "Nextjs",
-      "Django",
-      "Kubernetes",
-      "Docker",
-      "Gin",
-      "BetterAuth",
-      "PostgreSQL",
-      "MongoDB",
-      "Apache Kafka",
-      "REST",
-    ],
+      "Anime streaming and discovery platform on a microservice architecture.",
+    tech: ["Next.js", "Django", "Kubernetes"],
     link: "https://github.com/ENDragnee/movie_website_distributed",
-    featured: true,
   },
   {
     title: "Centralized Virtual Computer",
-    description:
-      "A virtualization solution for centralized computing resources.",
-    tech: [
-      "C++",
-      "Linux",
-      "Virtualization",
-      "NixOS",
-      "Nextjs",
-      "InfluxDB",
-      "Telegraf",
-      "Apache Kafka",
-    ],
+    description: "A virtualization solution for centralized computing resources.",
+    tech: ["NixOS", "Proxmox", "Next.js"],
     link: "https://github.com/ENDragnee/vdi_system_admin",
   },
-
-  // --- ASCII & COMMERCIAL ---
   {
-    title: "ASCII Technologies(Portfolio)",
-    description:
-      "A portfolio and management web app for ASCII Technologies PLC",
-    tech: [
-      "Laravel",
-      "PostgreSQL",
-      "Filament",
-      "Blade",
-      "CSS",
-      "JS",
-      "PHP",
-      "Minio",
-    ],
+    title: "ASCII Technologies (Portfolio)",
+    description: "A portfolio and management web app for ASCII Technologies PLC.",
+    tech: ["Laravel", "PostgreSQL"],
     link: "https://github.com/ENDragnee/ascii_home",
   },
   {
     title: "ASCII Payment",
     description: "Digital payment integration service.",
-    tech: ["Nextjs", "REST", "Mysql", "API Integration"],
+    tech: ["Next.js", "MySQL"],
     link: "https://onclck.vercel.app/",
   },
   {
     title: "Lumo Creator Studio",
-    description:
-      "Specialized interface for content creators on the Lumo platform.",
-    tech: ["Next.js", "Rich Text", "Craft.js", "REST", "Minio", "MongoDB"],
+    description: "Specialized interface for content creators on the Lumo platform.",
+    tech: ["Next.js", "MongoDB"],
     link: "https://lumo-creator-87ct.vercel.app/",
   },
   {
     title: "Lumo Admin",
-    description:
-      "Internal dashboard for managing the Lumo platform users and content.",
-    tech: ["Nextjs", "MongoDB", "GraphQl", "REST"],
+    description: "Internal dashboard for managing Lumo platform users and content.",
+    tech: ["Next.js", "MongoDB"],
     link: "https://lumo-admin.vercel.app/",
   },
-
-  // --- UNIVERSITY SYSTEMS (AASTU) ---
   {
     title: "AASTU Fresh Man Card",
-    description: "Digital ID management system for fresh students.",
-    tech: ["Verification", "Mariadb", "Nextjs"],
+    description: "Digital ID management system for incoming students.",
+    tech: ["Next.js", "MariaDB"],
     link: "https://aastu-verfiy.vercel.app/",
   },
   {
     title: "USAE Event Management",
     description: "Event scheduling and ticketing system for university events.",
-    tech: ["Next.js", "MongoDB", "REST"],
+    tech: ["Next.js", "MongoDB"],
     link: "https://usae-2017.vercel.app/",
   },
   {
     title: "USAE One Card System",
     description: "Unified access control system with reworked UI.",
-    tech: ["Nextjs", "Mariadb", "REST"],
+    tech: ["Next.js", "MariaDB"],
     link: "https://aastu-usae.vercel.app/",
   },
   {
     title: "USAE Cafe Management",
     description: "Cafeteria attendance and ordering system.",
-    tech: ["Nextjs", "Mariadb", "REST"],
+    tech: ["Next.js", "MariaDB"],
     link: "https://aastu-cafe.vercel.app/",
   },
   {
     title: "AASTU Locations",
     description: "Geo-location and mapping service for campus navigation.",
-    tech: ["Maps API", "GeoJSON", "HTML", "CSS", "JS"],
+    tech: ["Maps API", "GeoJSON"],
     link: "https://sweg-2014-ec-batch.github.io/AASTU-Loaction/",
   },
 ];

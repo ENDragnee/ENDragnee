@@ -1,22 +1,14 @@
 ---
 import Layout from "../layouts/layout.astro";
-import Hero from "../components/sections/hero.astro";
-import About from "../components/sections/about.astro";
 import Skills from "../components/sections/skills.astro";
 import Projects from "../components/sections/projects.astro";
 import Experience from "../components/sections/experience.astro";
-import GithubDashboard from "../components/sections/github-dashboard.astro";
+import Work from "../components/sections/work.astro";
 import { config } from "../data/config";
 ---
 
 <Layout title={`${config.identity.name} | ${config.identity.role}`}>
-  <div class="fade-in">
-    <Hero />
-  </div>
-
-  <div class="fade-in">
-    <About />
-  </div>
+  <Experience />
 
   <div class="fade-in">
     <Skills />
@@ -27,10 +19,6 @@ import { config } from "../data/config";
   </div>
 
   <div class="fade-in">
-    <Experience />
-  </div>
-
-  <div class="fade-in">
-    <GithubDashboard />
+    <Work />
   </div>
 </Layout>

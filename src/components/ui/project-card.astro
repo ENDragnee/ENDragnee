@@ -1,67 +1,54 @@
 ---
-import { Github, ExternalLink, FolderGit2 } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import type { Project } from "../../data/projects";
 
 interface Props {
   project: Project;
+  isFirst?: boolean;
 }
 
-const { project } = Astro.props;
+const { project, isFirst } = Astro.props;
 ---
 
-<article
-  class="flex flex-col h-full
-  p-6 rounded-xl border border-ui-200 dark:border-ui-800
-  bg-ui-50 dark:bg-ui-900/40
-  hover:border-crimson-500/50 hover:bg-ui-100 dark:hover:bg-ui-900
-  transition-all duration-300 group"
->
-  <div class="flex items-start justify-between mb-4">
-    <div class="flex items-center gap-2 text-crimson-500">
-      <FolderGit2 size={20} />
-    </div>
-
-    <div class="flex gap-3">
+<article class={`py-5 md:py-6 ${isFirst ? "" : "border-t border-hairline"}`}>
+  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-lg font-bold text-ink hover:text-accent transition-colors"
+    >
+      {project.title}
+    </a>
+    <div class="flex items-center shrink-0 text-muted -mr-2.5">
       {
         project.github && (
           <a
             href={project.github}
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="GitHub Repo"
-            class="text-ui-500 hover:text-crimson-500 transition-colors"
+            class="inline-flex items-center justify-center w-11 h-11 hover:text-accent active:text-accent transition-colors"
           >
-            <Github size={20} />
+            <Github size={16} />
           </a>
         )
       }
       <a
         href={project.link}
         target="_blank"
+        rel="noopener noreferrer"
         aria-label="Live Demo"
-        class="text-ui-500 hover:text-crimson-500 transition-colors"
+        class="inline-flex items-center justify-center w-11 h-11 hover:text-accent active:text-accent transition-colors"
       >
-        <ExternalLink size={20} />
+        <ExternalLink size={16} />
       </a>
     </div>
   </div>
 
-  <h3
-    class="text-lg font-bold text-ui-900 dark:text-ui-100 mb-2 group-hover:text-crimson-500 transition-colors"
-  >
-    {project.title}
-  </h3>
-
-  <p
-    class="text-sm text-ui-600 dark:text-ui-400 mb-6 flex-grow leading-relaxed"
-  >
+  <p class="text-base text-ink/90 leading-relaxed mt-2 mb-2 max-w-xl">
     {project.description}
   </p>
 
-  <div class="flex flex-wrap gap-2 mt-auto">
-    {
-      project.tech.map((t) => (
-        <span class="text-xs font-mono text-ui-500 dark:text-ui-500">#{t}</span>
-      ))
-    }
-  </div>
+  <p class="text-sm text-muted">{project.tech.join(" · ")}</p>
 </article>
